@@ -1,0 +1,174 @@
+* {
+  padding:0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 80px 10px 20px;
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+div.dice {
+  perspective: 1000px;
+  perspective-origin: 400px -200px;
+  position: relative;
+  left: 0;
+  height: 200px;
+  top: 100px;
+}
+.cube {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  top: -50px;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateZ(0deg) rotateY(0deg);
+  transition: 2s all ease;
+}
+.cube div {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(to top, #fff, #eee);
+  border: #eee 3px ridge;
+  display: grid;
+  grid-template-columns: repeat(3, calc(100% / 3));
+  grid-template-rows: repeat(3, calc(100% / 3));
+}
+.cube div > span {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.cube div > span.point::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 15px;
+  height: 15px;
+  background-color: #000;
+  border-radius: 50%;
+}
+.one {
+  transform: translateZ(50px);
+}
+.two {
+  transform: rotateY(180deg) translateZ(100px);
+}
+.three{
+  transform: rotateY(-270deg) translateX(100px);
+  transform-origin: center right;
+}
+.four {
+  transform: rotateY(-90deg) translateX(-100px);
+  transform-origin: center left ;
+}
+.five{
+  transform: rotateX(270deg) translateY(100px);
+  transform-origin: bottom center;
+}
+.six {
+  transform: rotateX(-270deg) translateY(-100px);
+  transform-origin: top center;
+}
+.pagination {
+  margin-top: 150px;
+  display: flex;
+}
+.pagination .role {
+  padding: 8px 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+  font-size: 30px;
+  background-color: #251e72;
+  border: none;
+  border-bottom: 4px solid #130f40;
+  color: #fff;
+  cursor: pointer;
+}
+.pagination .role:active,
+.pagination .role:focus {
+  border-width: 2px;
+  transform: translateY(2px);
+}
+.pagination .role:disabled {
+  color: #ddd;
+  background-color: #130f40;
+}
+.number-choosing {
+  position: relative;
+  border: 2px solid #333;
+  border-radius: 5px;
+  overflow: hidden;
+  padding-right: 25px;
+}
+.pagination .input {
+  display: block;
+  height: 100%;
+  padding: 5px 25px 5px 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  font-size: 20px;
+}
+.pagination .number-choosing .plus,
+.pagination .number-choosing .minus {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+}
+.pagination .number-choosing .minus {
+  top: unset;
+  bottom: 0;
+}
+.pagination .number-choosing .plus:hover,
+.pagination .number-choosing .minus:hover {
+  background-color: #ddd;
+}
+.pagination .number-choosing .plus::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: 5px solid;
+  border-color: transparent transparent #000 ;
+}
+.pagination .number-choosing .minus::before {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: 5px solid;
+  border-color: #000 transparent transparent ;
+}
+.pagination .input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  appearance: none;
+}
+.pagination .text {
+  line-height: 54px;
+  font-size: 25px;
+}
+.result {
+  margin-top: 20px;
+  padding: 15px 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-size: 18px;
+  border: 2px solid #eee;
+}
+.result .message {
+  margin-bottom: 5px;
+}
